@@ -8,89 +8,148 @@
     <link rel="stylesheet" href="https://cdn1.fpfis.tech.ec.europa.eu/ecl/v3.13.0/eu/styles/ecl-eu-print.css" crossorigin="anonymous" media="print"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            font-family: Arial, sans-serif;
-        }
 
-        #mainFooterContainer {
-            padding: 15px;
-            margin-top: auto;
-        }
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+}
 
-        .links-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-        }
+#mainFooterContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 15px;
+    margin-top: auto;
+}
 
-        .footer-link {
-            padding-right: 6px;
-            border-right: 1px solid #4765b5;
-        }
+/* Feedback container */
+#mainFooterFeedback {
+    flex-shrink: 0;
+    margin-right: 20px;
+}
 
-        .footer-link:last-child {
-            border-right: none;
-        }
+#feedbackContainer {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
 
-        .footer-link a {
-            text-decoration: underline;
-            color: #0e47cb;
-        }
+.feedback-link {
+    text-decoration: underline;
+    color: #0e47cb;
+    white-space: nowrap;
+}
 
-        .footer-link i {
-            margin-right: 6px;
-        }
+.feedback-link svg {
+    width: 16px;
+    height: 16px;
+}
 
-        @media (max-width: 568px) {
-            .links-container {
-                flex-direction: column;
-            }
+/* Legal links container */
+#legalCookiesContainer {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: flex-end;
+}
 
-            .footer-link {
-                padding-right: 0;
-                border-right: none;
-                margin-bottom: 10px;
-            }
+#legalCookiesContainer span {
+    position: relative;
+    padding-right: 12px;
+}
 
-            .footer-link:not(:first-child) {
-                padding-left: 22px;
-            }
-        }
+#legalCookiesContainer span:not(:last-child)::after {
+    content: '|';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #4765b5;
+}
 
-        @media (max-width: 380px) {
-            #mainFooterContainer {
-                padding: 15px;
-            }
+#legalCookiesContainer a {
+    text-decoration: underline;
+    color: #0e47cb;
+    white-space: nowrap;
+}
 
+/* Media query < 780px */
+@media (max-width: 568px) {
+    #mainFooterContainer {
+        flex-direction: row;
+        gap: 15px;
+    }
 
-        }
+    #legalCookiesContainer {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    
+}
+
+/* Media query < 380px */
+@media (max-width: 380px) {
+
+    #mainFooterContainer {
+        flex-direction: column;
+    }
+
+    #mainFooterFeedback {
+        flex: 1;
+    }
+
+    #legalCookiesContainer {
+        flex: 1;
+        flex-direction: column;
+        justify-content: space-between;
+        display: flex;
+        row-gap: 16px;
+    }
+
+    #legalCookiesContainer span::after {
+        display: none;
+    }
+   
+    #mainFooterFeedback svg {
+        display: none;
+    }
+    #feedbackContainer {
+    gap: 0px;
+    }
+
+    #legalCookiesContainer span:first-child {
+        padding-left: 0;
+    }
+}
+
     </style>
 </head>
 <body>
     <div id="mainFooterContainer">
-        <div class="links-container">
-            <span class="footer-link">
-                <a class="ecl-link ecl-link--standalone" href="mailto:Estat-user-support@ec.europa.eu?subject=European%20Statistical%20Monitor">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>Feedback
+        <div id="mainFooterFeedback" class="main-footer-item">
+            <div id="feedbackContainer">
+                <a class="feedback-link ecl-link ecl-link--standalone" href="mailto:Estat-user-support@ec.europa.eu?subject=European%20Statistical%20Monitor" target="_blank" style="text-decoration: none;">
+                    <svg class="svg-inline--fa fa-envelope fa-w-16" data-fa-transform="down-2" aria-hidden="true" focusable="false" data-prefix="fa" data-icon="envelope" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="" style="transform-origin: 0.5em 0.625em;">
+                        <g transform="translate(256 256)">
+                            <g transform="translate(0, 64)  scale(1, 1)  rotate(0 0 0)">
+                                <path fill="currentColor" d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z" transform="translate(-256 -256)"></path>
+                            </g>
+                        </g>
+                    </svg>
                 </a>
-            </span>
-            <span class="footer-link">
-                <a class="ecl-link ecl-link--standalone" href="https://commission.europa.eu/privacy-policy-websites-managed-european-commission_en">Privacy policy</a>
-            </span>
-            <span class="footer-link">
-                <a class="ecl-link ecl-link--standalone" href="https://commission.europa.eu/legal-notice_en">Legal notice</a>
-            </span>
-            <span class="footer-link">
-                <a class="ecl-link ecl-link--standalone" href="https://commission.europa.eu/cookies-policy_en">Cookies</a>
-            </span>
-            <span class="footer-link">
-                <a class="ecl-link ecl-link--standalone" href="https://ec.europa.eu/eurostat/web/main/help/accessibility">Accessibility</a>
-            </span>
+                <a class="feedback-link ecl-link ecl-link--standalone" href="mailto:Estat-user-support@ec.europa.eu?subject=European%20Statistical%20Monitor" target="_blank">Feedback</a>
+            </div>
+        </div>
+        <div id="legalCookiesContainer" class="main-footer-item">
+            <span><a class="ecl-link ecl-link--standalone" href="https://commission.europa.eu/privacy-policy-websites-managed-european-commission_en">Privacy policy</a></span>
+            <span><a class="ecl-link ecl-link--standalone" href="https://commission.europa.eu/legal-notice_en">Legal notice</a></span>
+            <span><a class="ecl-link ecl-link--standalone" href="https://commission.europa.eu/cookies-policy_en">Cookies</a></span>
+            <span><a class="ecl-link ecl-link--standalone" href="https://ec.europa.eu/eurostat/web/main/help/accessibility">Accessibility</a></span>
         </div>
     </div>
     <script defer src="https://cdn2.fpfis.tech.ec.europa.eu/ecl/v3.13.0/eu/scripts/ecl-eu.js" crossorigin="anonymous"></script>
